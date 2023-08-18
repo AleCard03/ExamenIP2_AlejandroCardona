@@ -1,8 +1,11 @@
 
 package examenip2_alejandrocardona;
 
+import java.util.Random;
+
 public abstract class Jugador {
     
+    static Random rng = new Random();
     private String nombre;
     private int edad;
     private String nacionalidad;
@@ -31,6 +34,16 @@ public abstract class Jugador {
         this.regate = regate;
         this.disparo = disparo;
     }
+
+    public Jugador(String nombre, int edad, String nacionalidad, String pieHabil, Equipo e) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nacionalidad = nacionalidad;
+        this.pieHabil = pieHabil;
+        this.e = e;
+    }
+    
+    
 
     public Jugador() {
     }
