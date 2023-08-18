@@ -5,7 +5,7 @@ import java.util.Random;
 
 public abstract class Jugador {
     
-    static Random rng = new Random();
+    Random rng = new Random();
     private String nombre;
     private int edad;
     private String nacionalidad;
@@ -33,6 +33,7 @@ public abstract class Jugador {
         this.passing = passing;
         this.regate = regate;
         this.disparo = disparo;
+        
     }
 
     public Jugador(String nombre, int edad, String nacionalidad, String pieHabil, Equipo e) {
@@ -41,6 +42,15 @@ public abstract class Jugador {
         this.nacionalidad = nacionalidad;
         this.pieHabil = pieHabil;
         this.e = e;
+//        setAgarre();
+//        setLanzamiento();
+//        setFisico();
+//        setRitmo();
+//        setEntrada();
+//        setVision();
+//        setPassing();
+//        setRegate();
+//        setDisparo();
     }
     
     
@@ -100,72 +110,72 @@ public abstract class Jugador {
         return agarre;
     }
 
-    public void setAgarre(int agarre) {
-        this.agarre = agarre;
+    public void setAgarre() {
+        this.agarre = (rng.nextInt(5)+1)*13;
     }
 
     public int getLanzamiento() {
         return lanzamiento;
     }
 
-    public void setLanzamiento(int lanzamiento) {
-        this.lanzamiento = lanzamiento;
+    public void setLanzamiento() {
+        this.lanzamiento = (rng.nextInt(5)+1)*13;
     }
 
     public int getFisico() {
         return fisico;
     }
 
-    public void setFisico(int fisico) {
-        this.fisico = fisico;
+    public void setFisico() {
+        this.fisico = (rng.nextInt(5)+1)*13;
     }
 
     public int getRitmo() {
         return ritmo;
     }
 
-    public void setRitmo(int ritmo) {
-        this.ritmo = ritmo;
+    public void setRitmo() {
+        this.ritmo = (rng.nextInt(5)+1)*13;
     }
 
     public int getEntrada() {
         return entrada;
     }
 
-    public void setEntrada(int entrada) {
-        this.entrada = entrada;
+    public void setEntrada() {
+        this.entrada = (rng.nextInt(5)+1)*13;
     }
 
     public int getVision() {
         return vision;
     }
 
-    public void setVision(int vision) {
-        this.vision = vision;
+    public void setVision() {
+        this.vision = (rng.nextInt(5)+1)*13;
     }
 
     public int getPassing() {
         return passing;
     }
 
-    public void setPassing(int passing) {
-        this.passing = passing;
+    public void setPassing() {
+        this.passing = (rng.nextInt(5)+1)*13;
     }
 
     public int getRegate() {
         return regate;
     }
 
-    public void setRegate(int regate) {
-        this.regate = regate;
+    public void setRegate() {
+        this.regate = (rng.nextInt(5)+1)*13;
     }
 
     public int getDisparo() {
         return disparo;
     }
 
-    public void setDisparo(int disparo) {
-        this.disparo = disparo;
+    public void setDisparo() {
+        this.disparo = (rng.nextInt(5)+1)*13;
     }
     
     public abstract int getAvgRating();

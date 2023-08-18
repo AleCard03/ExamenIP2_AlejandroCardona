@@ -11,13 +11,13 @@ public class Portero extends Jugador {
     public Portero(int agarre, int lanzamiento, int passing, String nombre, int edad, String nacionalidad, String pieHabil, Equipo e) {
         super(nombre, edad, nacionalidad, pieHabil, e);
         
-        setAgarre(0);
+        setAgarre();
         setLanzamiento();
         setPassing();
     }
 
     public Portero(int agarre, int lanzamiento, int passing) {
-        setAgarre(0);
+        setAgarre();
         setLanzamiento();
         setPassing();
     }
@@ -40,12 +40,14 @@ public class Portero extends Jugador {
     
     @Override
     public int getAvgRating(){
+         //Caracteristicas Especificas
         
-        int promedio = getAgarre();
+        int promedio = (this.getAgarre()+this.getLanzamiento()+this.getPassing()+this.getFisico()+this.getRitmo()+this.getEntrada()+this.getVision()+this.getRegate()+this.getDisparo())/9;
         return promedio;
         
     }
     
+    @Override
     public void setAgarre(){
         
         int x;
@@ -56,6 +58,8 @@ public class Portero extends Jugador {
         
         
     }
+    
+    @Override
      public void setLanzamiento(){
         
         int x;
@@ -67,6 +71,8 @@ public class Portero extends Jugador {
         
         
     }
+     
+     @Override
       public void setPassing(){
         
         int x;
@@ -79,16 +85,19 @@ public class Portero extends Jugador {
         
     }
 
+    @Override
     public int getAgarre() {
-        return agarre;
+        return this.agarre;
     }
 
+    @Override
     public int getLanzamiento() {
-        return lanzamiento;
+        return this.lanzamiento;
     }
 
+    @Override
     public int getPassing() {
-        return passing;
+        return this.passing;
     }
     
       
