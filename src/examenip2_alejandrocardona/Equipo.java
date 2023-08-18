@@ -28,6 +28,14 @@ public class Equipo {
         this.plantilla = plantilla;
     }
 
+    public Equipo(String nombre, String pais, ArrayList<Jugador> plantilla) {
+        this.nombre = nombre;
+        this.pais = pais;
+        this.plantilla = plantilla;
+    }
+    
+    
+
     public Equipo() {
     }
 
