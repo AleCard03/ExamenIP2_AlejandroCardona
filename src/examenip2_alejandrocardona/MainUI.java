@@ -6,6 +6,7 @@ package examenip2_alejandrocardona;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,6 +53,9 @@ public class MainUI extends javax.swing.JFrame {
         AddBtn2 = new javax.swing.JButton();
         AddBtn3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JugadoresLista = new javax.swing.JTable();
+        ListBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +124,11 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         AddBtn2.setText("Delantero");
+        AddBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddBtn2MouseClicked(evt);
+            }
+        });
         AddBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddBtn2ActionPerformed(evt);
@@ -127,6 +136,11 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         AddBtn3.setText("Medio Campista");
+        AddBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddBtn3MouseClicked(evt);
+            }
+        });
         AddBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddBtn3ActionPerformed(evt);
@@ -202,20 +216,57 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(AddBtn1)
                     .addComponent(AddBtn3)
                     .addComponent(AddBtn2))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("AñadirJugador", jPanel1);
+
+        JugadoresLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(JugadoresLista);
+
+        ListBtn.setText("Listar");
+        ListBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListBtnMouseClicked(evt);
+            }
+        });
+        ListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(ListBtn)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(ListBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("Listar", jPanel2);
@@ -281,7 +332,7 @@ public class MainUI extends javax.swing.JFrame {
         String nacionalidad = NacionalidadTextField.getText();
         String pieHabil = IzqBtn.getText();
         Equipo e = null;
-        Portero p = new Portero(nombre, WIDTH, nacionalidad, pieHabil, e);
+        Portero p = new Portero(nombre, edad, nacionalidad, pieHabil, e);
         jugadores.add(p);
         
     }//GEN-LAST:event_AddBtnMouseClicked
@@ -293,9 +344,40 @@ public class MainUI extends javax.swing.JFrame {
         String nacionalidad = NacionalidadTextField.getText();
         String pieHabil = IzqBtn.getText();
         Equipo e = null;
-        Defensa d = new Defensa(nombre, WIDTH, nacionalidad, pieHabil, e);
+        Defensa d = new Defensa(nombre, edad, nacionalidad, pieHabil, e);
         jugadores.add(d);
     }//GEN-LAST:event_AddBtn1MouseClicked
+
+    private void AddBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtn3MouseClicked
+        // TODO add your handling code here:
+        String nombre = NameTextField.getText();
+        int edad = Integer.parseInt(EdadTextField.getText());
+        String nacionalidad = NacionalidadTextField.getText();
+        String pieHabil = IzqBtn.getText();
+        Equipo e = null;
+        MedioCampista mc = new MedioCampista(nombre, edad, nacionalidad, pieHabil, e);
+        jugadores.add(mc);
+    }//GEN-LAST:event_AddBtn3MouseClicked
+
+    private void AddBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtn2MouseClicked
+        // TODO add your handling code here:
+        String nombre = NameTextField.getText();
+        int edad = Integer.parseInt(EdadTextField.getText());
+        String nacionalidad = NacionalidadTextField.getText();
+        String pieHabil = IzqBtn.getText();
+        Equipo e = null;
+        Delantero del = new Delantero(nombre, edad, nacionalidad, pieHabil, e);
+        jugadores.add(del);
+    }//GEN-LAST:event_AddBtn2MouseClicked
+
+    private void ListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListBtnActionPerformed
+
+    private void ListBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListBtnMouseClicked
+        // TODO add your handling code here:
+        listTabla();
+    }//GEN-LAST:event_ListBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -332,6 +414,28 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void listTabla(){
+        
+        JugadoresLista.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][]{},
+        new String[]{
+            "Nombre", "Edad", "Nacionalidad" , "Pie Habil", "Rating"
+            }
+        ));
+        
+        
+        for (Jugador jugadore : jugadores) {
+            
+            Object[]row = {jugadore.getNombre(), jugadore.getEdad(), jugadore.getNacionalidad(), jugadore.getPieHabil() , jugadore.getAvgRating()};
+            DefaultTableModel modelo = (DefaultTableModel) JugadoresLista.getModel();
+            modelo.addRow(row);
+            JugadoresLista.setModel(modelo);
+            
+        }
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
@@ -342,6 +446,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField EdadTextField;
     private javax.swing.JComboBox<String> EquiposCB;
     private javax.swing.JRadioButton IzqBtn;
+    private javax.swing.JTable JugadoresLista;
+    private javax.swing.JButton ListBtn;
     private javax.swing.JTextField NacionalidadTextField;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTabbedPane PanelListar;
@@ -352,5 +458,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
