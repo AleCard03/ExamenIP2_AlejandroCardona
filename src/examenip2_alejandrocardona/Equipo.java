@@ -33,6 +33,11 @@ public class Equipo {
         this.pais = pais;
         this.plantilla = plantilla;
     }
+
+    public Equipo(String nombre, String pais) {
+        this.nombre = nombre;
+        this.pais = pais;
+    }
     
     
 

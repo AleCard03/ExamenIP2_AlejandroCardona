@@ -6,6 +6,7 @@ package examenip2_alejandrocardona;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainUI extends javax.swing.JFrame {
     static ArrayList<Jugador> jugadores = new ArrayList();
+    static ArrayList<Equipo> equipos = new ArrayList();
     /**
      * Creates new form MainUI
      */
@@ -65,6 +67,10 @@ public class MainUI extends javax.swing.JFrame {
         EquipoPais = new javax.swing.JTextField();
         EquipoBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaEquipo = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -230,7 +236,7 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(AddBtn1)
                     .addComponent(AddBtn3)
                     .addComponent(AddBtn2))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("AñadirJugador", jPanel1);
@@ -310,6 +316,11 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         EquipoBtn.setText("Crear");
+        EquipoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EquipoBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -350,20 +361,67 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(EquipoOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(EquipoBtn)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("AgregarEquipo", jPanel3);
+
+        TablaEquipo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(TablaEquipo);
+
+        jButton1.setText("Listar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Modificar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(562, 562, 562)
+                        .addComponent(jButton2)))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jButton1)
+                        .addGap(88, 88, 88)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("ModificarEquipo", jPanel4);
@@ -376,7 +434,7 @@ public class MainUI extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         PanelListar.addTab("AgregarEstadio", jPanel5);
@@ -389,7 +447,7 @@ public class MainUI extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         PanelListar.addTab("ModificarEstadio", jPanel6);
@@ -402,7 +460,7 @@ public class MainUI extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         PanelListar.addTab("EliminarJugador", jPanel7);
@@ -415,7 +473,7 @@ public class MainUI extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         PanelListar.addTab("EliminarEquipo", jPanel8);
@@ -428,7 +486,7 @@ public class MainUI extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         PanelListar.addTab("EliminarEstadio", jPanel9);
@@ -439,7 +497,7 @@ public class MainUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelListar)
+                .addComponent(PanelListar, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -567,6 +625,32 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EquipoPaisActionPerformed
 
+    private void EquipoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipoBtnMouseClicked
+        // TODO add your handling code here:
+        String x , y;
+        x = EquipoNombre.getText();
+        y = EquipoPais.getText();
+        String z = EquipoOwner.getText();
+        Equipo e = new Equipo(x, y);
+        equipos.add(e);
+        EquipoNombre.setText("");
+        EquipoPais.setText("");
+    }//GEN-LAST:event_EquipoBtnMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        listTabla2();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        int index = TablaEquipo.getSelectedRow();
+        String newName = JOptionPane.showInputDialog("Ingrese el nuevo Nombre");
+        equipos.get(index).setNombre(newName);
+        String newPais = JOptionPane.showInputDialog("Ingrese el nuevo pais");
+        equipos.get(index).setPais(newPais);
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -628,6 +712,28 @@ public class MainUI extends javax.swing.JFrame {
         
     }
     
+     private void listTabla2(){
+        
+        TablaEquipo.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][]{},
+        new String[]{
+            "Nombre", "Pais", "Estadios" , "Jugadores"
+            }
+        ));
+        
+        
+        
+        for (Equipo team : equipos) {
+            
+            Object[]row = {team.getNombre(), team.getPais(), team.getEst(), team.getPlantilla()};
+            DefaultTableModel modelo = (DefaultTableModel) TablaEquipo.getModel();
+            modelo.addRow(row);
+            TablaEquipo.setModel(modelo);
+            
+        }
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
@@ -647,6 +753,9 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField NacionalidadTextField;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTabbedPane PanelListar;
+    private javax.swing.JTable TablaEquipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -665,5 +774,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
