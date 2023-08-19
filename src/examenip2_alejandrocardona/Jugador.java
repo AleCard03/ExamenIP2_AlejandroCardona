@@ -180,4 +180,10 @@ public abstract class Jugador {
     
     public abstract int getAvgRating();
     
+    public String toString(){
+        
+        return getNombre()+"  \n"+getAvgRating();
+        
+    }
+    
 }

@@ -84,6 +84,9 @@ public class MainUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         EquipoCrear = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TablaEstadio = new javax.swing.JTable();
+        BtnModEst = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -546,15 +549,48 @@ public class MainUI extends javax.swing.JFrame {
 
         PanelListar.addTab("AgregarEstadio", jPanel5);
 
+        TablaEstadio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(TablaEstadio);
+
+        BtnModEst.setText("Listar");
+        BtnModEst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnModEstMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1175, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(BtnModEst)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(BtnModEst)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelListar.addTab("ModificarEstadio", jPanel6);
@@ -679,6 +715,7 @@ public class MainUI extends javax.swing.JFrame {
         int index = TablaEqJugadores.getSelectedRow();
         Equipo e = equipos.get(index);
         Defensa d = new Defensa(nombre, edad, nacionalidad, pieHabil, e);
+        System.out.println(index);
         equipos.get(index).addPlantilla(d);
         jugadores.add(d);
         NameTextField.setText("");
@@ -798,6 +835,12 @@ public class MainUI extends javax.swing.JFrame {
         EstadioCapacidad.setText("");
     }//GEN-LAST:event_EquipoCrearMouseClicked
 
+    private void BtnModEstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnModEstMouseClicked
+        // TODO add your handling code here:
+        listTabla4();
+        
+    }//GEN-LAST:event_BtnModEstMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -902,6 +945,27 @@ public class MainUI extends javax.swing.JFrame {
         }
         
     }
+     private void listTabla4(){
+         
+        TablaEstadio.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][]{},
+        new String[]{
+            "Nombre", "Ciudad", "Capacidad"
+            }
+        ));
+        
+        
+        
+        for (Estadio es : estadios) {
+            
+            Object[]row = {es.getNombre(), es.getCiudad(), es.getCapacidad()};
+            DefaultTableModel modelo = (DefaultTableModel) TablaEstadio.getModel();
+            modelo.addRow(row);
+            TablaEstadio.setModel(modelo);
+            
+        }
+         
+     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -909,6 +973,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton AddBtn1;
     private javax.swing.JButton AddBtn2;
     private javax.swing.JButton AddBtn3;
+    private javax.swing.JButton BtnModEst;
     private javax.swing.JTextField CiudadEstadio;
     private javax.swing.JRadioButton DerBtn;
     private javax.swing.JFormattedTextField EdadTextField;
@@ -928,6 +993,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane PanelListar;
     private javax.swing.JTable TablaEqJugadores;
     private javax.swing.JTable TablaEquipo;
+    private javax.swing.JTable TablaEstadio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -954,5 +1020,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

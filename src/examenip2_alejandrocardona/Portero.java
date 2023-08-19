@@ -99,6 +99,8 @@ public class Portero extends Jugador {
     public int getPassing() {
         return this.passing;
     }
+
+   
     
       
       

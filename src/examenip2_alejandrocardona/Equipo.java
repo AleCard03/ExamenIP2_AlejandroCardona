@@ -10,7 +10,7 @@ public class Equipo {
     
     private String nombre, pais;
     private int rating;
-    private ArrayList <Jugador> plantilla;
+    private ArrayList <Jugador> plantilla = new ArrayList();
     private Estadio est;
 
     public Equipo(String nombre, String pais, int rating, ArrayList<Jugador> plantilla, Estadio est) {
