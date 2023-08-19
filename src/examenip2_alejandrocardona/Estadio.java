@@ -14,6 +14,14 @@ public class Estadio {
         this.capacidad = capacidad;
     }
 
+    public Estadio(String nombre, String ciudad, int capacidad) {
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.capacidad = capacidad;
+    }
+    
+    
+
     public Estadio() {
     }
 

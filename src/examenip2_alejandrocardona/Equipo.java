@@ -39,6 +39,11 @@ public class Equipo {
         this.pais = pais;
     }
     
+    public void addPlantilla(Jugador j){
+        
+        plantilla.add(j);
+        
+    }
     
 
     public Equipo() {
